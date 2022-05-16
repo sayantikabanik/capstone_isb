@@ -4,6 +4,7 @@
 ### Installing miniconda/light version of anaconda 
 - [Info + details](https://docs.conda.io/en/latest/miniconda.html)
 
+### Commands to install the packages via conda
 ```shell
 conda env create --file environment.yml
 ```
@@ -19,7 +20,7 @@ conda info
 ```shell
 conda deactivate
 ```
-### Installing the package in local 
+### Installing the analysis_framework package in local 
 ```shell
 pip install -e .
 ```
