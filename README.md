@@ -1,10 +1,10 @@
 # capstone_isb
 
 
-### Installing miniconda/light version of anaconda 
+### Installing miniconda/light version of anaconda 💁🏽‍♀️
 - [Info + details](https://docs.conda.io/en/latest/miniconda.html)
 
-### Commands to install the packages via conda/ env activation
+### Commands to install the packages via conda/ env activation ✍️
 ```shell
 conda env create --file environment.yml
 ```
@@ -20,12 +20,12 @@ conda info
 ```shell
 conda deactivate
 ```
-### Installing the analysis_framework package in local 
+### Installing the analysis_framework package in local ⬇️
 ```shell
 pip install -e .
 ```
 
-### Basic flow how to make best use of the workflow
+### Info how to make best use of the workflow ⏯
 - Clone the repo
 - Create the env using the above commands 
 - Install the package 
@@ -37,9 +37,8 @@ pip install -e .
   - `model` all modelling aspects (**python scripts only**)
   - `data` pipepine and raw data
 
-### About pre-commit-hooks and activating 
-Just like the name suggests, precommit-hooks are designed to format the code based on PEP standards before committing.
-(more details)(https://pre-commit.com/)
+### About pre-commit-hooks and activating 🔌
+Just like the name suggests, precommit-hooks are designed to format the code based on PEP standards before committing. (More details 🗒)(https://pre-commit.com/)
 ```python
 pip install pre-commit
 pre-commit install
@@ -52,12 +51,12 @@ pre-commit install
 """
 ```
 
-### How to contribute to the repo
+### How to contribute to the repo 🤔
 - Create a separate branch for your usecase 
 - Raise PR (**DO NOT** commit to main)
 
 
-#### Meeting 
+#### Meeting 📞
 - 23rd April 2022 (9:30 PM) [Zoom link to be updated]
 
 Topic: Capstone Project Selection
