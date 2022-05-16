@@ -29,11 +29,11 @@ pip install -e .
 - Create the env using the above commands 
 - Install the package 
 - All the tests goes into the `tests` directory 
-- Any test experiements eg- `pickle files generated from autoML` goes under `experiments` directory
+- Any test experiements eg- `Data wraggling/inital exploration notebooks` goes under `experiments` directory
 - All modelling and related details into `analysis_framework`, create subdirectories as required 
 - Under forecasting_framework there are three submodules `utils`, `model`, `data` 
   - `utils` reusable code components
-  - `model` all modelling aspects (python scripts are highly encouraged)
+  - `model` all modelling aspects (**python scripts only**)
   - `data` pipepine and raw data
 
 ### How to contribute to the repo
