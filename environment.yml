@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - python=3.8
+  - python=3.10
   - pre-commit=2.16
   - matplotlib=3.5
   - numpy=1.21
