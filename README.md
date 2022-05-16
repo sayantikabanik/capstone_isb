@@ -38,7 +38,7 @@ pip install -e .
   - `data` pipepine and raw data
 
 ### About pre-commit-hooks and activating 🔌
-Just like the name suggests, precommit-hooks are designed to format the code based on PEP standards before committing. (More details 🗒)[https://pre-commit.com/]
+Just like the name suggests, precommit-hooks are designed to format the code based on PEP standards before committing. [More details 🗒](https://pre-commit.com/)
 ```python
 pip install pre-commit
 pre-commit install
