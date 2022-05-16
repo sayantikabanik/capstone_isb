@@ -1,0 +1,40 @@
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up env
+        uses: conda-incubator/setup-miniconda@master
+        with:
+          miniforge-variant: Miniforge3
+          miniforge-version: latest
+          activate-environment: capstone
+          environment-file: environment.yml
+          python-version: ${{ matrix.python-version }}
+          auto-activate-base: false
+          channels: conda-forge
+          channel-priority: strict
+
+      - name: Install package
+        run: |
+          pip install -e .
+      - name: Conda info
+        run: conda info
+      - name: Conda list
+        run: conda list
