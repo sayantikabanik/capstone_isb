@@ -4,7 +4,7 @@
 ### Installing miniconda/light version of anaconda 
 - [Info + details](https://docs.conda.io/en/latest/miniconda.html)
 
-### Commands to install the packages via conda
+### Commands to install the packages via conda/ env activation
 ```shell
 conda env create --file environment.yml
 ```
@@ -36,6 +36,20 @@ pip install -e .
   - `utils` reusable code components
   - `model` all modelling aspects (**python scripts only**)
   - `data` pipepine and raw data
+
+### About pre-commit-hooks and activating 
+Just like the name suggests, precommit-hooks are designed to format the code based on PEP standards before committing.
+```python
+pip install pre-commit
+pre-commit install
+
+"""---commit your changes---
+- check for errors, hooks format the code by deafult
+- add the files
+- commit it again
+- push thr changes 
+"""
+```
 
 ### How to contribute to the repo
 - Create a separate branch for your usecase 
