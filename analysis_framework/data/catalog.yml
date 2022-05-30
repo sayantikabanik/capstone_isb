@@ -1,0 +1,11 @@
+metadata:
+  version: 1.0
+
+sources:
+  review_dataset:
+    driver: csv
+    description: "Ambition box data for employee reviews"
+    args:
+      urlpath: '{{CATALOG_DIR}}/combinedReviews.csv'
+      csv_kwargs:
+        assume_missing: true
