@@ -16,8 +16,10 @@ dependencies:
   - scikit-learn=1.0
   - statsmodels=0.13
   - urllib3=1.26
-  - dagster
-  - dagit
+  - dagster=0.15.3
+  - dagit=0.15.3
   - intake
+  - panel
+  - holoviews
   - pip:
     - factor_analyzer
