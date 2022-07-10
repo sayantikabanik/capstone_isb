@@ -51,6 +51,20 @@ pre-commit install
 """
 ```
 
+### Data pipeline 🛠
+
+- Built using `Dagster`, an open source orchestration tool 
+
+**Commands to trigger the pipeline**
+- Command to run the pipeline from root of the project 
+```shell
+python analysis_framework/pipeline/process.py
+```
+- Command to view the dagit UI 
+```shell
+dagit -f analysis_framework/pipeline/process.py
+```
+
 ### How to contribute to the repo 🤔
 - Create a separate branch for your usecase 
 - Raise PR (**DO NOT** commit to main)
