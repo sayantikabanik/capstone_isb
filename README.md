@@ -30,7 +30,7 @@ pip install -e .
 - Create the env using the above commands 
 - Install the package 
 - All the tests goes into the `tests` directory 
-- Any test experiements eg- `Data wraggling/inital exploration notebooks` goes under `experiments` directory
+- Any test experiments eg- `Data wraggling/inital exploration notebooks` goes under `experiments` directory
 - All modelling and related details into `analysis_framework`, create subdirectories as required 
 - Under forecasting_framework there are three submodules `utils`, `model`, `data` 
   - `utils` reusable code components
