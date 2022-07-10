@@ -21,5 +21,6 @@ dependencies:
   - intake
   - panel
   - holoviews
+  - scikit-learn
   - pip:
     - factor_analyzer
