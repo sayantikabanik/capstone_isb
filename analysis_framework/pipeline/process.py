@@ -45,7 +45,7 @@ def factor_analysis(df_subset_fa) -> Output:
 
 
 @op
-def write_csv(df_result):
+def write_cluster_output(df_result):
     df_result.to_csv('cluster_output.csv')
     return 0
 
@@ -89,7 +89,7 @@ def compute():
     scaled_df = scaling_data(factor_df)
     cluster_df = clustering_processed_factor_data(scaled_df, df_result)
     cluster_operation_df = cluster_operations(cluster_df)
-    write_csv(cluster_df)
+    write_cluster_output(cluster_df)
 
 
 if __name__ == "__main__":
