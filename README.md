@@ -64,6 +64,7 @@ python analysis_framework/pipeline/process.py
 ```shell
 dagit -f analysis_framework/pipeline/process.py
 ```
+![Dagit UI](/experiments/outputs/pipeline_dagit.png)
 
 ### How to contribute to the repo 🤔
 - Create a separate branch for your usecase 
