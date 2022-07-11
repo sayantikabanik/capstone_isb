@@ -9,7 +9,7 @@
 conda env create --file environment.yml
 ```
 ```shell
-conda activate fp2
+conda activate capstone
 ```
 ```shell
 conda list
