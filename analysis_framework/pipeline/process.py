@@ -8,10 +8,11 @@ from factor_analyzer import FactorAnalyzer
 from sklearn.preprocessing import normalize
 from sklearn.cluster import KMeans
 
+catalog_path = DATA_CATALOG_PATH.joinpath("catalog.yml")
+
 
 @op
 def read_raw_data():
-    catalog_path = DATA_CATALOG_PATH.joinpath("catalog.yml")
     catalog = intake.open_catalog(catalog_path)
     df_raw = catalog.review_dataset.read()
     return df_raw
