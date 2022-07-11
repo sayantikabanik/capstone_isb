@@ -66,6 +66,12 @@ dagit -f analysis_framework/pipeline/process.py
 ```
 ![Dagit UI](/experiments/outputs/pipeline_dagit.png)
 
+### Dashboard
+
+- Tools used - Panel, Holoviews 
+- Main files `app.py` (panel serve requirements and layout components) and `base.py` (contains all the logic)
+- Command to trigger the dashboard (subject to change) - `python analysis_framework/dashboard/app.py`
+
 ### How to contribute to the repo 🤔
 - Create a separate branch for your usecase 
 - Raise PR (**DO NOT** commit to main)

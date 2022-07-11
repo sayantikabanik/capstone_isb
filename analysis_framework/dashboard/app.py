@@ -4,7 +4,7 @@ pn.extension('echarts')
 
 def plot():
     widget_01 = pn.indicators.LinearGauge(
-    name='Burnout check', value=20, bounds=(0, 100), format='{value:.0f} %',
+    name='Burnout check', value=70, bounds=(0, 100), format='{value:.0f} %',
     colors=['green', 'gold', 'red'], horizontal=True, width=125
 )
     widget_02 = pn.widgets.Select(name='Company', options=['Infosys', 'Wipro', 'TCS'], size=3)

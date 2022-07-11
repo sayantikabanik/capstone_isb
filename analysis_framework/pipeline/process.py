@@ -46,7 +46,7 @@ def factor_analysis(df_subset_fa) -> Output:
 
 @op
 def write_cluster_output(df_result):
-    df_result.to_csv('cluster_output.csv')
+    df_result.to_csv('pipeline/cluster_output.csv')
     return 0
 
 
