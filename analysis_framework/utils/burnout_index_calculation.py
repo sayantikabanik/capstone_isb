@@ -20,7 +20,7 @@ class Burnout:
                                           cluster_percent['exhaustion'].sum()) * 100
             return cluster_percent
         else:
-            print("Cluster data out generated, please run the pipeline")
+            print("Clustering data not found, please run the pipeline first")
 
     @classmethod
     def combine_scores(cls):
