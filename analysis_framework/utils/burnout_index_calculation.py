@@ -9,7 +9,7 @@ class Burnout:
         pass
 
     @classmethod
-    def percent_calculation(self):
+    def percent_calculation(cls):
         file_name = "cluster_output.csv"
         output_file_path = PIPELINE_PATH.joinpath(file_name)
         if os.path.exists(output_file_path):
@@ -22,7 +22,10 @@ class Burnout:
         else:
             print("Cluster data out generated, please run the pipeline")
 
-
-if __name__ == "__main__":
-    obj = Burnout()
-    out = obj.percent_calculation()
+    @classmethod
+    def combine_scores(cls):
+        output = cls.percent_calculation()
+        medium_amber = output.iloc[[0, 1, 4]].percent.sum()
+        not_burned_out_green = output.iloc[[2]].percent.sum()
+        burned_out_red = output.iloc[[3]].percent.sum()
+        return medium_amber, not_burned_out_green, burned_out_red
