@@ -1,6 +1,9 @@
 import panel as pn
+import pandas as pd
 import numpy as np
-pn.extension('echarts')
+import hvplot.pandas
+import holoviews as hv
+hv.extension('bokeh')
 from analysis_framework.utils import burnout_index_calculation
 
 text = """
@@ -16,12 +19,9 @@ text = """
 def burnout_widget():
     obj = burnout_index_calculation.Burnout()
     amber, green, red = obj.combine_scores()
-    print(amber, green, red)
-    gauge = pn.indicators.LinearGauge(
-        name='Burnout check', value=50, bounds=(0, 100), format='{value:.0f} % for the org',
-        colors=[(np.round(green, 1), 'green'), (amber, 'gold'), (1, 'red')], show_boundaries=True
-    )
-    return gauge
+    data = pd.DataFrame({'Not burned out': green, 'TOB': amber, 'Burned out': red}, index=['burnout_levels'])
+    chart = data.hvplot.barh(stacked=True, height=120, color=["green", 'yellow', 'red'])
+    return chart
 
 
 def suggestion_widget():
