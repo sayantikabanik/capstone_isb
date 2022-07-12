@@ -2,7 +2,7 @@ import intake
 import pandas as pd
 
 from dagster import get_dagster_logger, job, op, Output, graph
-from analysis_framework import DATA_CATALOG_PATH
+from analysis_framework import DATA_CATALOG_PATH, PIPELINE_PATH
 from factor_analyzer import FactorAnalyzer
 
 from sklearn.preprocessing import normalize
@@ -39,7 +39,7 @@ def factor_analysis(df_subset_fa) -> Output:
     fa = FactorAnalyzer(n_factors=3, rotation='oblimin')
     fa.fit(df_subset_fa)
     df_factor_scores = pd.DataFrame(fa.transform(df_subset_fa))
-    df_subset_fa[['exhaustion','Depersonalization','PersonalAccomplishment']] = df_factor_scores
+    df_subset_fa[['exhaustion', 'Depersonalization', 'PersonalAccomplishment']] = df_factor_scores
     fa_data = df_subset_fa
     print(fa_data)
     return fa_data
@@ -47,7 +47,9 @@ def factor_analysis(df_subset_fa) -> Output:
 
 @op
 def write_cluster_output(df_result):
-    df_result.to_csv('pipeline/cluster_output.csv')
+    file_name = "cluster_output.csv"
+    output_file_path = PIPELINE_PATH.joinpath(file_name)
+    df_result.to_csv(output_file_path)
     return 0
 
 

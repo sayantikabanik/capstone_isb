@@ -56,14 +56,13 @@ pre-commit install
 - Built using `Dagster`, an open source orchestration tool 
 
 **Commands to trigger the pipeline**
-- Command to run the pipeline from `package root` 
+- Command to run the pipeline from root `capstone_isb`
 ```shell
-cd analysis_framework
-python pipeline/process.py
+python analysis_framework/pipeline/process.py
 ```
-- Command to view the dagit UI (make sure you are inside `analysis_framework`)
+- Command to view the dagit UI
 ```shell
-dagit -f pipeline/process.py
+dagit -f analysis_framework/pipeline/process.py
 ```
 ![Dagit UI](/experiments/outputs/pipeline_dagit.png)
 
