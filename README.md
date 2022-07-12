@@ -56,13 +56,14 @@ pre-commit install
 - Built using `Dagster`, an open source orchestration tool 
 
 **Commands to trigger the pipeline**
-- Command to run the pipeline from root of the project 
+- Command to run the pipeline from `package root` 
 ```shell
-python analysis_framework/pipeline/process.py
+cd analysis_framework
+python pipeline/process.py
 ```
-- Command to view the dagit UI 
+- Command to view the dagit UI (make sure you are inside `analysis_framework`)
 ```shell
-dagit -f analysis_framework/pipeline/process.py
+dagit -f pipeline/process.py
 ```
 ![Dagit UI](/experiments/outputs/pipeline_dagit.png)
 
