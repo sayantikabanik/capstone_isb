@@ -53,4 +53,3 @@ def location_widget():
 def comp_widget():
     company = pn.widgets.Select(name='Company', options=['Infosys', 'Wipro', 'TCS'], size=3)
     return company
-

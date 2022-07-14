@@ -22,5 +22,7 @@ dependencies:
   - panel
   - holoviews
   - scikit-learn
+  - bokeh
+  - hvplot
   - pip:
     - factor_analyzer
