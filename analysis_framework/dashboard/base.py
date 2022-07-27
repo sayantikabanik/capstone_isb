@@ -3,8 +3,10 @@ import pandas as pd
 import numpy as np
 import hvplot.pandas
 import holoviews as hv
+
 hv.extension('bokeh')
 from analysis_framework.utils import burnout_index_calculation
+from analysis_framework.utils import recommendation_static as rs
 
 text = """
    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -35,10 +37,25 @@ def suggestion_widget():
 
 
 def recommendation_widget():
+    obj = burnout_index_calculation.Burnout()
+    amber, green, red = obj.combine_scores()
+    if amber <= 40:
+        amber_text = rs.amber["0-40"]
+    elif 40 < amber < 80:
+        amber_text = rs.amber["40-80"]
+    else:
+        amber_text = rs.amber["80-100"]
+
+    if red <= 40:
+        red_text = rs.red["0-40"]
+    elif 40 < red < 80:
+        red_text = rs.red["40-80"]
+    else:
+        red_text = rs.red["80-100"]
     recommendation = pn.Column(
         '# Recommendation',
         pn.layout.Divider(),
-        text,
+        pn.Column(amber_text, red_text),
         background='whitesmoke', width=400
     )
     return recommendation
