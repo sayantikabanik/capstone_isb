@@ -24,5 +24,6 @@ dependencies:
   - scikit-learn
   - bokeh
   - hvplot
+  - param
   - pip:
     - factor_analyzer

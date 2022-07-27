@@ -1,7 +1,7 @@
 import intake
 import pandas as pd
 
-from dagster import get_dagster_logger, job, op, Output, graph
+from dagster import get_dagster_logger, job, op, Output, graph, Out
 from analysis_framework import DATA_CATALOG_PATH, PIPELINE_PATH
 from factor_analyzer import FactorAnalyzer
 
@@ -39,9 +39,9 @@ def factor_analysis(df_subset_fa) -> Output:
     fa = FactorAnalyzer(n_factors=3, rotation='oblimin')
     fa.fit(df_subset_fa)
     df_factor_scores = pd.DataFrame(fa.transform(df_subset_fa))
-    df_subset_fa[['exhaustion', 'Depersonalization', 'PersonalAccomplishment']] = df_factor_scores
+    df_subset_fa[['exhaustion', 'Depersonalization',
+                  'PersonalAccomplishment']] = df_factor_scores
     fa_data = df_subset_fa
-    print(fa_data)
     return fa_data
 
 
