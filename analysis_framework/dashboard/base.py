@@ -67,6 +67,13 @@ def location_widget():
     return location
 
 
+def cluster_widget():
+    menu_items = [('Option A', '1'), ('Option B', '2'), ('Option C', '3'), None, ('Help', 'help')]
+    cluster = pn.widgets.MenuButton(name='cluster', items=menu_items, button_type='primary')
+    return cluster
+
+
 def comp_widget():
-    company = pn.widgets.Select(name='Company', options=['Infosys', 'Wipro', 'TCS'], size=3)
+    menu_items = [('Option A', 'Infosys'), ('Option B', 'TCS'), ('Option C', 'Wipro'), None, ('Help', 'HCL')]
+    company = pn.widgets.MenuButton(name='company', items=menu_items, button_type='primary')
     return company

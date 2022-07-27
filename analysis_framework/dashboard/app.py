@@ -4,13 +4,14 @@ from base import (
     suggestion_widget,
     recommendation_widget,
     comp_widget,
-    location_widget
+    location_widget,
+    cluster_widget
 )
 
 
 def plot():
     plot_component = pn.Row(burnout_widget)
-    plot_component_02 = pn.Column(comp_widget, pn.Row(location_widget, height=200))
+    plot_component_02 = pn.Column(pn.Row(comp_widget, location_widget, cluster_widget, height=300))
     plot_component_text = pn.Row(recommendation_widget, suggestion_widget)
     view = pn.template.FastListTemplate(
         site="Burn out analysis",
