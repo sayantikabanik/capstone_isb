@@ -1,0 +1,41 @@
+Original Value,Mapped Value,Type
+Pune,Pune,Major
+Chennai,Chennai,Major
+Bengaluru,Bengaluru,Major
+Hyderabad,Hyderabad,Major
+Noida,Noida,Major
+Kolkata,Kolkata,Major
+Mumbai,Mumbai,Major
+Gurgaon,Gurgaon,Major
+Lucknow,Lucknow,Major
+Bhubaneshwar,Bhubaneshwar,Major
+Nagpur,Nagpur,Major
+Thane,Thane,Major
+Mysore,Mysore,Major
+Gandhinagar,Gandhinagar,Major
+Navi Mumbai,Navi Mumbai,Major
+Greater Noida,Greater Noida,Major
+New Delhi,New Delhi,Major
+Chandigarh,Chandigarh,Major
+Jaipur,Jaipur,Major
+Kochi,Kochi,Major
+Madurai,Madurai,Major
+Trivandrum,Trivandrum,Major
+Indore,Indore,Major
+Ahmedabad,Ahmedabad,Major
+Coimbatore,Coimbatore,Major
+Mangalore,Mangalore,Major
+Hyderabad/Secunderabad,Hyderabad,Mapped
+Bengaluru/Bangalore,Bengaluru,Mapped
+Bangalore Rural,Bengaluru,Mapped
+Banglore,Bengaluru,Mapped
+Bangalore Rural,Bengaluru,Mapped
+Bangalore,Bengaluru,Mapped
+Delhi NCR,New Delhi,Mapped
+Gurgaon/Gurugram,Gurgaon,Mapped
+Delhi,New Delhi,Mapped
+Gurugram,Gurgaon,Mapped
+Mumbai Suburban,Mumbai,Mapped
+Mysuru/Mysore,Mysuru,Mapped
+Kochi/Cochin,Kochi,Mapped
+Airoli,Mumbai,Mapped
