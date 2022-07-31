@@ -8,6 +8,10 @@ git clone <repo>
 git pull origin master
 ```
 
+### Git commands for reference
+[Material link](https://gist.github.com/sayantikabanik/8189ffdeee52f5c8f072244f4be94069)
+
+
 ### Installing miniconda/light version of anaconda 💁🏽‍♀️
 - [Info + details](https://docs.conda.io/en/latest/miniconda.html)
 
