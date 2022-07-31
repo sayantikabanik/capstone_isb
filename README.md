@@ -1,5 +1,12 @@
 # capstone_isb
 
+```shell
+# for the first time 
+git clone <repo>
+
+# for subsequent tries 
+git pull origin master
+```
 
 ### Installing miniconda/light version of anaconda 💁🏽‍♀️
 - [Info + details](https://docs.conda.io/en/latest/miniconda.html)
