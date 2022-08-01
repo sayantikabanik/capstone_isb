@@ -72,7 +72,7 @@ python analysis_framework/pipeline/process.py
 ```shell
 dagit -f analysis_framework/pipeline/process.py
 ```
-![Dagit UI](/experiments/outputs/pipeline_dagit.png)
+![Dagit UI](https://github.com/sayantikabanik/capstone_isb/blob/main/experiments/outputs/pipeline_dagit.png)
 
 ### Dashboard
 
