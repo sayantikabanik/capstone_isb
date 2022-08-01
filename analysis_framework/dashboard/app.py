@@ -10,7 +10,7 @@ from base import (
 
 
 def plot():
-    plot_component = pn.Row(burnout_widget)
+    plot_component = pn.Column(burnout_widget)
     plot_component_02 = pn.Column(pn.Row(comp_widget, location_widget, cluster_widget, height=300))
     plot_component_text = pn.Row(recommendation_widget, suggestion_widget)
     view = pn.template.FastListTemplate(
