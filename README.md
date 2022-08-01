@@ -10,7 +10,7 @@ cd <repo location>
 ```
 
 ### Installing env setup using miniconda 💁🏽‍♀️
-- [Info + details](https://docs.conda.io/en/latest/miniconda.html)
+- [Instructions](https://docs.conda.io/en/latest/miniconda.html)
 
 ### Commands to install the packages via conda/ env activation ✍️
 ```shell
