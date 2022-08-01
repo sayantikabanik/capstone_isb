@@ -1,18 +1,15 @@
 # capstone_isb
 
+### Initial Repo setup
 ```shell
 # for the first time 
 git clone <repo>
 
-# for subsequent tries 
-git pull origin master
+# change working directory to root of repo cloned
+cd <repo location>
 ```
 
-### Git commands for reference
-[Material link](https://gist.github.com/sayantikabanik/8189ffdeee52f5c8f072244f4be94069)
-
-
-### Installing miniconda/light version of anaconda 💁🏽‍♀️
+### Installing env setup using miniconda 💁🏽‍♀️
 - [Info + details](https://docs.conda.io/en/latest/miniconda.html)
 
 ### Commands to install the packages via conda/ env activation ✍️
@@ -88,4 +85,9 @@ dagit -f analysis_framework/pipeline/process.py
 
 ### How to contribute to the repo 🤔
 - Create a separate branch for your usecase 
+- Rebase with main branch
 - Raise PR (**DO NOT** commit to main)
+
+### More on Git/version control usage 
+[Material link](https://gist.github.com/sayantikabanik/8189ffdeee52f5c8f072244f4be94069)
+
