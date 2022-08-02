@@ -1,5 +1,13 @@
 # Capstone project : Peakhealth
 
+### How to contribute to the repo 🤔
+- Create a separate branch for your usecase 
+- Rebase with main branch
+- Raise PR (**DO NOT** commit to main)
+
+### More on Git/version control usage 
+[Material link](https://gist.github.com/sayantikabanik/8189ffdeee52f5c8f072244f4be94069)
+
 ### Repository setup
 ```shell
 # for the first time 
@@ -86,13 +94,3 @@ dagit -f analysis_framework/pipeline/process.py
 - Command to trigger the dashboard (subject to change) - `python analysis_framework/dashboard/app.py`
 
 ![In progress dashboard](https://user-images.githubusercontent.com/17350312/181509554-583837fc-f3f0-40ea-8978-5b8d9ec22edb.png)
-
-
-### How to contribute to the repo 🤔
-- Create a separate branch for your usecase 
-- Rebase with main branch
-- Raise PR (**DO NOT** commit to main)
-
-### More on Git/version control usage 
-[Material link](https://gist.github.com/sayantikabanik/8189ffdeee52f5c8f072244f4be94069)
-
