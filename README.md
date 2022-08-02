@@ -1,4 +1,4 @@
-# capstone_isb
+# Capstone project : Peakhealth
 
 ### Initial Repo setup
 ```shell
