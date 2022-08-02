@@ -1,6 +1,6 @@
 # Capstone project : Peakhealth
 
-### Initial Repo setup
+### Repository setup
 ```shell
 # for the first time 
 git clone <repo>
@@ -31,6 +31,11 @@ conda deactivate
 ### Installing the analysis_framework package in local ⬇️
 ```shell
 pip install -e .
+```
+
+### Update the `capstone` environment
+```shell
+conda env update --file environment.yml --prune
 ```
 
 ### Info how to make best use of the workflow ⏯
