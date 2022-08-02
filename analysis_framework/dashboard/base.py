@@ -3,10 +3,12 @@ import pandas as pd
 import numpy as np
 import hvplot.pandas
 import holoviews as hv
+from holoviews import opts, dim
+
 
 hv.extension('bokeh')
 from analysis_framework.utils import burnout_index_calculation
-from analysis_framework.utils import recommendation_static as rs
+from analysis_framework.utils import static as rs
 
 text = """
    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -21,8 +23,11 @@ text = """
 def burnout_widget():
     obj = burnout_index_calculation.Burnout()
     amber, green, red = obj.combine_scores()
-    data = pd.DataFrame({'Not burned out': green, 'TOB': amber, 'Burned out': red}, index=['burnout_levels'])
-    chart = data.hvplot.barh(stacked=True, height=120, color=["green", 'yellow', 'red'])
+    data = pd.DataFrame({'Not burned out': green, 'TOB': amber, 'Burned out': red}, index=['burnout_percentage'])
+    chart = data.hvplot.bar(stacked=True, color=["green", 'yellow', 'red'],
+                            width=400,
+                            legend_position='right',
+                            legend_offset=(200, 200))
     return chart
 
 
