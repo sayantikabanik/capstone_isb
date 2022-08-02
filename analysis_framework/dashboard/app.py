@@ -26,7 +26,7 @@ if __name__ == "__main__":
         plot,
         port=5006,
         websocket_origin=['*'],
-        autoreload=True,
+        # autoreload=True,
         start=True,
         location=True,
         )
