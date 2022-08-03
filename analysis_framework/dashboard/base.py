@@ -67,8 +67,7 @@ def recommendation_widget():
 
 
 def location_widget():
-    menu_items = rs.locations_dropdown
-    location = pn.widgets.MenuButton(name='Location', items=menu_items, button_type='primary')
+    location = pn.widgets.MenuButton(name='Location', items=rs.locations_dropdown, button_type='primary')
     return location
 
 
@@ -79,6 +78,5 @@ def cluster_widget():
 
 
 def comp_widget():
-    menu_items = rs.company_dropdown
-    company = pn.widgets.MenuButton(name='company', items=menu_items, button_type='primary')
+    company = pn.widgets.MenuButton(name='company', items=rs.company_dropdown, button_type='primary')
     return company
