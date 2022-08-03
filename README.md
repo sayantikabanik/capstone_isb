@@ -34,6 +34,8 @@ conda list
 conda info
 ```
 ```shell
+
+To switch between different environment
 conda deactivate
 ```
 ### Installing the analysis_framework package in local ⬇️
