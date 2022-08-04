@@ -33,7 +33,7 @@ conda list
 ```shell
 conda info
 ```
--To switch between different environment
+> To switch between different environment
 ```shell
 conda deactivate
 ```
