@@ -26,11 +26,15 @@ def subset_data(df_raw):
     df_subset = df_subset.dropna()
     return df_subset
 
+@op
+def subset_data_dim(df_raw):
+    df_subset_dim = df_raw[['reviewText','location','cons','pros','jobFunction']]
+    return df_subset_dim
 
 @op
 def index_reset(df):
     # important step: for factor analysis to have a similar sl no of the data
-    df_reset = df.reset_index(drop=True)
+    df_reset = df.reset_index(drop=False)
     return df_reset
 
 
@@ -51,8 +55,7 @@ def write_cluster_output(df_result):
     output_file_path = PIPELINE_PATH.joinpath(file_name)
     df_result.to_csv(output_file_path)
     return 0
-
-
+    
 @op
 def intermediate_clustering_step(df_result):
     factor_df = df_result[['exhaustion','Depersonalization','PersonalAccomplishment']]
@@ -81,18 +84,26 @@ def clustering_processed_factor_data(scaled_df, df_result):
 def cluster_operations(cluster_df):
     return cluster_df.groupby('cluster').mean()
 
+@op
+def combine_fact_dim(cluster_df,df_subset_dim):
+    combined_df=cluster_df.merge(df_subset_dim,on='index',how='left')
+    return combined_df
+
 
 @job
 def compute():
     df_raw = read_raw_data()
     df_subset = subset_data(df_raw)
     df_fa = index_reset(df_subset)
+    df_subset_dim=subset_data_dim(df_raw)
+    df_subset_dim=index_reset(df_subset_dim)
     df_result = factor_analysis(df_fa)
     factor_df = intermediate_clustering_step(df_result)
     scaled_df = scaling_data(factor_df)
     cluster_df = clustering_processed_factor_data(scaled_df, df_result)
     cluster_operation_df = cluster_operations(cluster_df)
-    write_cluster_output(cluster_df)
+    combined_df=combine_fact_dim(cluster_df,df_subset_dim)
+    write_cluster_output(combined_df)
 
 
 if __name__ == "__main__":

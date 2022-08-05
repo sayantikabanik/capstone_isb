@@ -25,6 +25,7 @@ dependencies:
   - bokeh
   - hvplot
   - param
+  - nltk
   - pip:
     - factor_analyzer
     - sumy
