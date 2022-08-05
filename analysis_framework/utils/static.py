@@ -50,6 +50,10 @@ locations_dropdown = ['Lucknow', 'Noida', 'Chennai', 'Pune',
 # ---------------------------------
 company_dropdown = ['HCL Technologies', 'Infosys', 'TCS', 'Wipro']
 
+# Cluster options
+#----------------
+cluster_option = [-1, 1, 2, 3]
+
 # Text summarization
 # ---------------------------------
 bonus_words_list = ['work life balance', 'job security', 'work environment',

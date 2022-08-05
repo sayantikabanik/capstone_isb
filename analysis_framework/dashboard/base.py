@@ -4,24 +4,24 @@ import numpy as np
 import hvplot.pandas
 import holoviews as hv
 from holoviews import opts, dim
-
+from analysis_framework.utils.text_summarization import summarize_text as stext
 
 hv.extension('bokeh')
 from analysis_framework.utils import burnout_index_calculation
 from analysis_framework.utils import static as rs
 
-text = """
-   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-   ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-   ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-   reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-   Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-   mollit anim id est laborum.
-   """
+location_widget = pn.widgets.Select(name='Location', options=rs.locations_dropdown)
+cluster_widget = pn.widgets.Select(name='cluster', options=rs.cluster_option)
+comp_widget = pn.widgets.Select(name='company', options=rs.company_dropdown)
 
 
-def burnout_widget():
-    obj = burnout_index_calculation.Burnout()
+@pn.depends(location_widget.param.value,
+            cluster_widget.param.value,
+            comp_widget.param.value)
+def burnout_widget(location_widget, cluster_widget, comp_widget):
+    obj = burnout_index_calculation.Burnout(location_widget,
+                                            comp_widget,
+                                            cluster_widget)
     amber, green, red = obj.combine_scores()
     data = pd.DataFrame({'Not burned out': green, 'TOB': amber, 'Burned out': red}, index=['burnout_percentage'])
     chart = data.hvplot.bar(stacked=True, color=["green", 'yellow', 'red'],
@@ -31,18 +31,30 @@ def burnout_widget():
     return chart
 
 
-def suggestion_widget():
+@pn.depends(location_widget.param.value,
+            cluster_widget.param.value,
+            comp_widget.param.value)
+def suggestion_widget(location_widget, cluster_widget, comp_widget):
+    obj = burnout_index_calculation.Burnout(location_widget,
+                                            comp_widget,
+                                            cluster_widget)
+    filtered_output = obj.filtered_data()
     suggestion = pn.Column(
         '# Suggestion',
         pn.layout.Divider(),
-        text,
+        stext(filtered_output),
         background='whitesmoke', width=400
     )
     return suggestion
 
 
-def recommendation_widget():
-    obj = burnout_index_calculation.Burnout()
+@pn.depends(location_widget.param.value,
+            cluster_widget.param.value,
+            comp_widget.param.value)
+def recommendation_widget(location_widget, cluster_widget, comp_widget):
+    obj = burnout_index_calculation.Burnout(location_widget,
+                                            comp_widget,
+                                            cluster_widget)
     amber, green, red = obj.combine_scores()
     if amber <= 40:
         amber_text = rs.amber["0-40"]
@@ -64,19 +76,3 @@ def recommendation_widget():
         background='whitesmoke', width=400
     )
     return recommendation
-
-
-def location_widget():
-    location = pn.widgets.MenuButton(name='Location', items=rs.locations_dropdown, button_type='primary')
-    return location
-
-
-def cluster_widget():
-    menu_items = [('Option A', '1'), ('Option B', '2'), ('Option C', '3'), None, ('Help', 'help')]
-    cluster = pn.widgets.MenuButton(name='cluster', items=menu_items, button_type='primary')
-    return cluster
-
-
-def comp_widget():
-    company = pn.widgets.MenuButton(name='company', items=rs.company_dropdown, button_type='primary')
-    return company
