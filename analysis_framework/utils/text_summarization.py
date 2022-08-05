@@ -7,7 +7,7 @@ from analysis_framework.utils import static as rs
 import nltk
 # nltk.download('punkt')
 
-sentence_count = 5
+sentence_count = 9
 
 
 def summarize_text(text, language='english'):
@@ -18,5 +18,6 @@ def summarize_text(text, language='english'):
     summarizer.null_words = get_stop_words(language)
     summary = summarizer(PlaintextParser(text, Tokenizer(language)).document, sentence_count)
     for sentence in summary:
+        print(sentence)
         return sentence
 

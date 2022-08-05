@@ -62,5 +62,5 @@ class Burnout:
                                                        (cluster_data["location"] == str(self.loc))]
             else:
                 print("exception occured")
-        return filtered_event_data.reviewText
+        return filtered_event_data
 
