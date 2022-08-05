@@ -26,5 +26,6 @@ dependencies:
   - hvplot
   - param
   - nltk
-  - sumy
-  - factor_analyzer
+  - pip:
+    - factor_analyzer
+    - sumy
