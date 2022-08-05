@@ -1,48 +1,79 @@
 import panel as pn
 import pandas as pd
-import numpy as np
-import hvplot.pandas
 import holoviews as hv
-from holoviews import opts, dim
-
-
-hv.extension('bokeh')
+import hvplot.pandas
+from analysis_framework.utils.text_summarization import summarize_text as stext
 from analysis_framework.utils import burnout_index_calculation
 from analysis_framework.utils import static as rs
+hv.extension('bokeh')
 
-text = """
-   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-   ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-   ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-   reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-   Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-   mollit anim id est laborum.
-   """
+location_widget_c = pn.widgets.Select(name='Location', options=rs.locations_dropdown, width=180)
+cluster_widget_c = pn.widgets.Select(name='Cluster', options=rs.cluster_option,  width=180)
+comp_widget_c = pn.widgets.Select(name='Company', options=rs.company_dropdown,  width=180)
 
 
-def burnout_widget():
-    obj = burnout_index_calculation.Burnout()
+location_widget_b = pn.widgets.Select(name='Location', options=rs.locations_dropdown, width=180)
+cluster_widget_b = pn.widgets.Select(name='Cluster', options=rs.cluster_option,  width=180)
+comp_widget_b = pn.widgets.Select(name='Company', options=rs.company_dropdown,  width=180)
+
+# client
+@pn.depends(location_widget_c.param.value,
+            cluster_widget_c.param.value,
+            comp_widget_c.param.value)
+def burnout_widget_client(location_widget_c, cluster_widget_c, comp_widget_c):
+    obj = burnout_index_calculation.Burnout(location_widget_c,
+                                            comp_widget_c,
+                                            cluster_widget_c)
     amber, green, red = obj.combine_scores()
     data = pd.DataFrame({'Not burned out': green, 'TOB': amber, 'Burned out': red}, index=['burnout_percentage'])
     chart = data.hvplot.bar(stacked=True, color=["green", 'yellow', 'red'],
                             width=400,
+                            title="CLIENT",
+                            legend_position='right',
+                            legend_offset=(200, 200))
+    return chart
+
+# benchmark
+@pn.depends(location_widget_b.param.value,
+            cluster_widget_b.param.value,
+            comp_widget_b.param.value)
+def burnout_widget_benchmark(location_widget_b, cluster_widget_b, comp_widget_b):
+    obj = burnout_index_calculation.Burnout(location_widget_b,
+                                            comp_widget_b,
+                                            cluster_widget_b)
+    amber, green, red = obj.combine_scores()
+    data = pd.DataFrame({'Not burned out': green, 'TOB': amber, 'Burned out': red}, index=['burnout_percentage'])
+    chart = data.hvplot.bar(stacked=True, color=["green", 'yellow', 'red'],
+                            width=400,
+                            title="COMPETITOR",
                             legend_position='right',
                             legend_offset=(200, 200))
     return chart
 
 
-def suggestion_widget():
+@pn.depends(location_widget_c.param.value,
+            cluster_widget_c.param.value,
+            comp_widget_c.param.value)
+def suggestion_widget(location_widget_c, cluster_widget_c, comp_widget_c):
+    obj = burnout_index_calculation.Burnout(location_widget_c,
+                                            comp_widget_c,
+                                            cluster_widget_c)
+    filtered_output = obj.filtered_data()
     suggestion = pn.Column(
         '# Suggestion',
-        pn.layout.Divider(),
-        text,
-        background='whitesmoke', width=400
+        stext(filtered_output.reviewText),
+        background='#b8d1f5', height=200, width=500
     )
     return suggestion
 
 
-def recommendation_widget():
-    obj = burnout_index_calculation.Burnout()
+@pn.depends(location_widget_c.param.value,
+            cluster_widget_c.param.value,
+            comp_widget_c.param.value)
+def recommendation_widget(location_widget_c, cluster_widget_c, comp_widget_c):
+    obj = burnout_index_calculation.Burnout(location_widget_c,
+                                            comp_widget_c,
+                                            cluster_widget_c)
     amber, green, red = obj.combine_scores()
     if amber <= 40:
         amber_text = rs.amber["0-40"]
@@ -59,24 +90,39 @@ def recommendation_widget():
         red_text = rs.red["80-100"]
     recommendation = pn.Column(
         '# Recommendation',
-        pn.layout.Divider(),
         pn.Column(amber_text, red_text),
-        background='whitesmoke', width=400
+        background='#f2f5da', height=600, width=500
     )
     return recommendation
 
+@pn.depends(location_widget_b.param.value,
+            cluster_widget_b.param.value,
+            comp_widget_b.param.value)
+def pros_widget(location_widget_b, cluster_widget_b, comp_widget_b):
+    obj = burnout_index_calculation.Burnout(location_widget_b,
+                                            comp_widget_b,
+                                            cluster_widget_b)
+    filtered_output = obj.filtered_data()
+    pros = pn.Column(
+        '# Pros',
+        stext(filtered_output.pros),
+        background='#e4ede6', height=200, width=500
+    )
+    return pros
 
-def location_widget():
-    location = pn.widgets.MenuButton(name='Location', items=rs.locations_dropdown, button_type='primary')
-    return location
 
-
-def cluster_widget():
-    menu_items = [('Option A', '1'), ('Option B', '2'), ('Option C', '3'), None, ('Help', 'help')]
-    cluster = pn.widgets.MenuButton(name='cluster', items=menu_items, button_type='primary')
-    return cluster
-
-
-def comp_widget():
-    company = pn.widgets.MenuButton(name='company', items=rs.company_dropdown, button_type='primary')
-    return company
+@pn.depends(location_widget_b.param.value,
+            cluster_widget_b.param.value,
+            comp_widget_b.param.value)
+def cons_widget(location_widget_b, cluster_widget_b, comp_widget_b):
+    obj = burnout_index_calculation.Burnout(location_widget_b,
+                                            comp_widget_b,
+                                            cluster_widget_b)
+    filtered_output = obj.filtered_data()
+    cons = pn.Column(
+        '# Cons',
+        pn.layout.Divider(),
+        stext(filtered_output.cons),
+        background='#fac8d3', height=200, width=500
+    )
+    return cons
