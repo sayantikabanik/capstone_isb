@@ -28,7 +28,8 @@ def subset_data(df_raw):
 
 @op
 def subset_data_dim(df_raw):
-    df_subset_dim = df_raw[['reviewText','location','cons','pros','jobFunction']]
+    df_subset_dim = df_raw[['reviewText', 'location', 'cons',
+                            'pros', 'jobFunction', 'company']]
     return df_subset_dim
 
 @op
@@ -58,7 +59,7 @@ def write_cluster_output(df_result):
     
 @op
 def intermediate_clustering_step(df_result):
-    factor_df = df_result[['exhaustion','Depersonalization','PersonalAccomplishment']]
+    factor_df = df_result[['exhaustion', 'Depersonalization', 'PersonalAccomplishment']]
     return factor_df
 
 
@@ -71,7 +72,7 @@ def scaling_data(factor_df):
 
 @op
 def clustering_processed_factor_data(scaled_df, df_result):
-    kmeans = KMeans(init="k-means++", n_clusters=5, n_init=10,   max_iter=300,random_state=42)
+    kmeans = KMeans(init="k-means++", n_clusters=5, n_init=10, max_iter=300, random_state=42)
     kmeans.fit(scaled_df)
     kmeans.inertia_
     kmeans.cluster_centers_
@@ -84,9 +85,10 @@ def clustering_processed_factor_data(scaled_df, df_result):
 def cluster_operations(cluster_df):
     return cluster_df.groupby('cluster').mean()
 
+
 @op
 def combine_fact_dim(cluster_df,df_subset_dim):
-    combined_df=cluster_df.merge(df_subset_dim,on='index',how='left')
+    combined_df=cluster_df.merge(df_subset_dim, on='index', how='left')
     return combined_df
 
 
@@ -102,7 +104,7 @@ def compute():
     scaled_df = scaling_data(factor_df)
     cluster_df = clustering_processed_factor_data(scaled_df, df_result)
     cluster_operation_df = cluster_operations(cluster_df)
-    combined_df=combine_fact_dim(cluster_df,df_subset_dim)
+    combined_df=combine_fact_dim(cluster_df, df_subset_dim)
     write_cluster_output(combined_df)
 
 
