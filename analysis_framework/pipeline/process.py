@@ -55,13 +55,6 @@ def write_cluster_output(df_result):
     output_file_path = PIPELINE_PATH.joinpath(file_name)
     df_result.to_csv(output_file_path)
     return 0
-
-@op
-def write_cluster_wtext_output(df_subset_dim):
-    file_name = "cluster_wtext_output.csv"
-    output_file_path = PIPELINE_PATH.joinpath(file_name)
-    df_subset_dim.to_csv(output_file_path)
-    return 0
     
 @op
 def intermediate_clustering_step(df_result):
@@ -110,8 +103,7 @@ def compute():
     cluster_df = clustering_processed_factor_data(scaled_df, df_result)
     cluster_operation_df = cluster_operations(cluster_df)
     combined_df=combine_fact_dim(cluster_df,df_subset_dim)
-    write_cluster_output(cluster_df)
-    write_cluster_wtext_output(combined_df)
+    write_cluster_output(combined_df)
 
 
 if __name__ == "__main__":

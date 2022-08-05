@@ -17,3 +17,7 @@ locations_dropdown = ['Lucknow', 'Noida', 'Chennai', 'Pune',
                       'Bhubaneshwar', 'Others']
 
 company_dropdown = ['HCL Technologies', 'Infosys', 'TCS', 'Wipro']
+
+bonus_words_list=['work life balance', 'job security', 'work environment', 'career growth', 'salary', 'culture', 'career' ,'pay', 'improvement', 'manager', 'employees', 'company', 'compensation', 'appraisal']
+
+stigma_words_list = ['worst', 'low', 'poor', 'bad', 'insecurity', 'no', 'long', 'slow', 'less', 'pressure', 'struggle', 'lack', 'decent', 'issues', 'exhaustion', 'detachment', 'boring', 'hectic', 'pathetic', 'challenging']

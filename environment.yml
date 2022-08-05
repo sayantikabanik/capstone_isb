@@ -27,3 +27,6 @@ dependencies:
   - param
   - pip:
     - factor_analyzer
+    - sumy=0.10.0
+    - nltk
+    - re=2022.7.25
