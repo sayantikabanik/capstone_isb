@@ -86,7 +86,8 @@ python analysis_framework/pipeline/process.py
 ```shell
 dagit -f analysis_framework/pipeline/process.py
 ```
-![Dagit UI](https://github.com/sayantikabanik/capstone_isb/blob/main/experiments/outputs/pipeline_dagit.png)
+![Dagit UI](https://user-images.githubusercontent.com/17350312/183067533-859ec39c-4236-465c-8992-8b376d8a5e4a.png)
+
 
 ### Dashboard
 
@@ -94,4 +95,4 @@ dagit -f analysis_framework/pipeline/process.py
 - Main files `app.py` (panel serve requirements and layout components) and `base.py` (contains all the logic)
 - Command to trigger the dashboard (subject to change) - `python analysis_framework/dashboard/app.py`
 
-![In progress dashboard](https://user-images.githubusercontent.com/17350312/181509554-583837fc-f3f0-40ea-8978-5b8d9ec22edb.png)
+![Dashboard](https://user-images.githubusercontent.com/17350312/183067503-38b37f84-147b-4c2b-ad77-926f7b4ccffd.png)
