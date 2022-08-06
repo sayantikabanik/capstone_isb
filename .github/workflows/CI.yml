@@ -30,6 +30,10 @@ jobs:
           auto-activate-base: false
           channels: conda-forge
           channel-priority: strict
+          
+      - name: Test with pytest
+        run: |
+          pytest tests
 
       - name: Install package
         run: |
