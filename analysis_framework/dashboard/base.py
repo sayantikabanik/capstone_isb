@@ -120,7 +120,7 @@ def pros_widget(location_widget_b, cluster_widget_b, comp_widget_b):
         '# Pros',
         pn.layout.Divider(),
         stext(display_output),
-        background='#e4ede6', height=400, width=500
+        background='#e4ede6', height=500, width=500
     )
     return pros
 
@@ -138,6 +138,6 @@ def cons_widget(location_widget_b, cluster_widget_b, comp_widget_b):
         '# Cons',
         pn.layout.Divider(),
         stext(display_output),
-        background='#fac8d3', height=400, width=500
+        background='#fac8d3', height=500, width=500
     )
     return cons
