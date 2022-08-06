@@ -72,7 +72,7 @@ def suggestion_widget(location_widget_c, cluster_widget_c, comp_widget_c):
         '# Suggestion',
         pn.layout.Divider(),
         stext(display_output),
-        background='#b8d1f5', height=200, width=500
+        background='#b8d1f5', height=400, width=500
     )
     return suggestion
 
