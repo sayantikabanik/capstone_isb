@@ -5,12 +5,26 @@
 - Rebase with main branch
 - Raise PR (**DO NOT** commit to main)
 
+### Info how to make best use of the workflow ⏯
+- Clone the repo
+- Create the env using the above commands 
+- Install the package 
+- All the tests goes into the `tests` directory 
+- Any test experiments eg- `Data wraggling/inital exploration notebooks` goes under `experiments` directory
+- All modelling and related details into `analysis_framework`, create subdirectories as required 
+- Under forecasting_framework there are three submodules `utils`, `model`, `data` and `pipelines`
+  - `utils` reusable code components
+  - `model` all modelling aspects (**python scripts only**)
+  - `data` raw dataset are stored 
+  - `pipeline` dagster pipeline and related computation output
+  
 ### More on Git/version control usage 
 [Material link](https://gist.github.com/sayantikabanik/8189ffdeee52f5c8f072244f4be94069)
 
 ### Repository setup
+- Set up authentication using OAuth, SSH or push token
 ```shell
-# for the first time 
+# for the first time
 git clone <repo>
 
 # change working directory to root of repo cloned
@@ -33,31 +47,19 @@ conda list
 ```shell
 conda info
 ```
-> To switch between different environment
-```shell
-conda deactivate
-```
 ### Installing the analysis_framework package in local ⬇️
 ```shell
 pip install -e .
 ```
 
-### Update the `capstone` environment
+### Update the `capstone` environment (post making changes to environment file)
 ```shell
 conda env update --file environment.yml --prune
 ```
-
-### Info how to make best use of the workflow ⏯
-- Clone the repo
-- Create the env using the above commands 
-- Install the package 
-- All the tests goes into the `tests` directory 
-- Any test experiments eg- `Data wraggling/inital exploration notebooks` goes under `experiments` directory
-- All modelling and related details into `analysis_framework`, create subdirectories as required 
-- Under forecasting_framework there are three submodules `utils`, `model`, `data` 
-  - `utils` reusable code components
-  - `model` all modelling aspects (**python scripts only**)
-  - `data` pipepine and raw data
+### To switch between different environment
+```shell
+conda deactivate
+```
 
 ### About pre-commit-hooks and activating 🔌
 Just like the name suggests, precommit-hooks are designed to format the code based on PEP standards before committing. [More details 🗒](https://pre-commit.com/)
