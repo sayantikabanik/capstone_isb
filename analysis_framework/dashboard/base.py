@@ -70,6 +70,7 @@ def suggestion_widget(location_widget_c, cluster_widget_c, comp_widget_c):
     display_output = compile_text(filtered_output,'reviewText')
     suggestion = pn.Column(
         '# Suggestion',
+        pn.layout.Divider(),
         stext(display_output),
         background='#b8d1f5', height=200, width=500
     )
@@ -99,6 +100,7 @@ def recommendation_widget(location_widget_c, cluster_widget_c, comp_widget_c):
         red_text = rs.red["80-100"]
     recommendation = pn.Column(
         '# Recommendation',
+        pn.layout.Divider(),
         pn.Column(amber_text, red_text),
         background='#f2f5da', height=600, width=500
     )
@@ -116,6 +118,7 @@ def pros_widget(location_widget_b, cluster_widget_b, comp_widget_b):
     display_output = compile_text(filtered_output,'pros')
     pros = pn.Column(
         '# Pros',
+        pn.layout.Divider(),
         stext(display_output),
         background='#e4ede6', height=400, width=500
     )
