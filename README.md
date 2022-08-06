@@ -17,6 +17,9 @@
   - `data` raw dataset are stored 
   - `pipeline` dagster pipeline and related computation output
   
+### Flowchart for repo structure 
+![github_capstone repo](https://user-images.githubusercontent.com/17350312/183260548-a2b2c501-b4eb-4d7b-bf79-478a8658ffaa.png)
+
 ### More on Git/version control usage 
 [Material link](https://gist.github.com/sayantikabanik/8189ffdeee52f5c8f072244f4be94069)
 
