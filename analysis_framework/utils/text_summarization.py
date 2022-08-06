@@ -7,17 +7,18 @@ from analysis_framework.utils import static as rs
 import nltk
 # nltk.download('punkt')
 
-sentence_count = 9
-
-
 def summarize_text(text, language='english'):
     summarizer = EdmundsonSummarizer(Stemmer(language))
     summarizer.stop_words = get_stop_words(language)
     summarizer.bonus_words = rs.bonus_words_list
     summarizer.stigma_words = rs.stigma_words_list
     summarizer.null_words = get_stop_words(language)
-    summary = summarizer(PlaintextParser(text, Tokenizer(language)).document, sentence_count)
+    sentence_list=[]
+    count=0
+    summary = summarizer(PlaintextParser(text, Tokenizer(language)).document, rs.sentence_count)
     for sentence in summary:
-        print(sentence)
-        return sentence
-
+        count += 1
+        sentence_list.append(str(f'{count}. {sentence}'))
+    output = "\n".join(sentence_list)
+    #display=print(output) 
+    return output
