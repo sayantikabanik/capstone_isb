@@ -12,9 +12,8 @@
 - All the tests goes into the `tests` directory 
 - Any test experiments eg- `Data wraggling/inital exploration notebooks` goes under `experiments` directory
 - All modelling and related details into `analysis_framework`, create subdirectories as required 
-- Under forecasting_framework there are three submodules `utils`, `model`, `data` and `pipelines`
+- Under forecasting_framework there are three submodules `utils`, `data` and `pipelines`
   - `utils` reusable code components
-  - `model` all modelling aspects (**python scripts only**)
   - `data` raw dataset are stored 
   - `pipeline` dagster pipeline and related computation output
   
