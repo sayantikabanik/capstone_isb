@@ -36,7 +36,8 @@ jobs:
           pip install -e .
       - name: Test with pytest
         run: |
-          pytest tests/
+          pytest tests/package.py 
+          pytest tests/pipeline.py
       - name: Conda info
         run: conda info
       - name: Conda list
