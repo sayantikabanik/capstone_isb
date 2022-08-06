@@ -50,12 +50,14 @@ def burnout_widget_benchmark(location_widget_b, cluster_widget_b, comp_widget_b)
                             legend_offset=(200, 200))
     return chart
 
+
 def compile_text(df,text_column):
     compiled_text=''
     for text in df[text_column].fillna('NA.'):
         if text!='NA.' and text!='NA':
              compiled_text=compiled_text+' '+text
     return compiled_text
+
 
 @pn.depends(location_widget_c.param.value,
             cluster_widget_c.param.value,
@@ -65,11 +67,12 @@ def suggestion_widget(location_widget_c, cluster_widget_c, comp_widget_c):
                                             comp_widget_c,
                                             cluster_widget_c)
     filtered_output = obj.filtered_data()
-    display_output=compile_text(filtered_output,'reviewText')
+    display_output = compile_text(filtered_output,'reviewText')
     suggestion = pn.Column(
         '# Suggestion',
+        pn.layout.Divider(),
         stext(display_output),
-        background='#b8d1f5', height=200, width=500
+        background='#b8d1f5', height=400, width=500
     )
     return suggestion
 
@@ -97,10 +100,12 @@ def recommendation_widget(location_widget_c, cluster_widget_c, comp_widget_c):
         red_text = rs.red["80-100"]
     recommendation = pn.Column(
         '# Recommendation',
+        pn.layout.Divider(),
         pn.Column(amber_text, red_text),
         background='#f2f5da', height=600, width=500
     )
     return recommendation
+
 
 @pn.depends(location_widget_b.param.value,
             cluster_widget_b.param.value,
@@ -110,11 +115,12 @@ def pros_widget(location_widget_b, cluster_widget_b, comp_widget_b):
                                             comp_widget_b,
                                             cluster_widget_b)
     filtered_output = obj.filtered_data()
-    display_output=compile_text(filtered_output,'pros')
+    display_output = compile_text(filtered_output,'pros')
     pros = pn.Column(
         '# Pros',
+        pn.layout.Divider(),
         stext(display_output),
-        background='#e4ede6', height=200, width=500
+        background='#e4ede6', height=500, width=500
     )
     return pros
 
@@ -132,6 +138,6 @@ def cons_widget(location_widget_b, cluster_widget_b, comp_widget_b):
         '# Cons',
         pn.layout.Divider(),
         stext(display_output),
-        background='#fac8d3', height=200, width=500
+        background='#fac8d3', height=500, width=500
     )
     return cons
