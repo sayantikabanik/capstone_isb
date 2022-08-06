@@ -30,14 +30,13 @@ jobs:
           auto-activate-base: false
           channels: conda-forge
           channel-priority: strict
-          
-      - name: Test with pytest
-        run: |
-          pytest tests
 
       - name: Install package
         run: |
           pip install -e .
+      - name: Test with pytest
+        run: |
+          pytest tests
       - name: Conda info
         run: conda info
       - name: Conda list
