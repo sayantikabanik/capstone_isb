@@ -3,6 +3,8 @@ import pandas as pd
 import numpy as np
 from dagster import get_dagster_logger, job, op, Output, graph, Out
 from analysis_framework import DATA_CATALOG_PATH, PIPELINE_PATH
+from analysis_framework.utils.extract_location import extract_location
+from analysis_framework.utils.map_maj_location import map_maj_location
 from factor_analyzer import FactorAnalyzer
 
 from sklearn.preprocessing import normalize
@@ -48,23 +50,6 @@ def maj_loc_harmonize(df_loc):
     # #Harmonizing Locations
     location_mapping=df_loc.set_index('Original Value')['Mapped Value'].to_dict()
     return location_mapping
-
-def map_maj_location(major_locations,location_name):
-    
-    for loc in major_locations:
-        ind=-1
-        if location_name.find(loc)!=-1:
-            ind=location_name.find(loc)
-            return loc
-    if ind==-1:
-        return location_name
-
-def extract_location(jobFunction):
-    try:
-        loc=jobFunction.split(' for ')[1].split(' in ')[1]
-        return loc
-    except:
-        return 'Not Specified'        
 
 @op
 def clean_location(df_subset_dim,major_locations,location_mapping,location_col='location',jobFunc_col='jobFunction'):
