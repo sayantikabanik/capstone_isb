@@ -59,7 +59,7 @@ cluster_option = {'None': -1,
 
 # Text summarization
 # ---------------------------------
-sentence_count=2
+sentence_count=3
 bonus_words_list = ['work life balance', 'job security', 'work environment',
                     'career growth', 'salary', 'culture', 'career' , 'pay',
                     'improvement', 'manager', 'employees', 'company',
