@@ -1,6 +1,13 @@
-def extract_location(jobFunction):
+"""
+Method to extract locations: used is pre-processing
+"""
+
+
+def extract_location(job_function):
     try:
-        loc=jobFunction.split(' for ')[1].split(' in ')[1]
+        loc = job_function.split(' for ')[1].split(' in ')[1]
         return loc
     except:
-        return 'Not Specified'
+        return "Not Specified"
+    finally:
+        print("Unidentified error, check logs")
