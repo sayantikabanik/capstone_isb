@@ -1,5 +1,5 @@
 metadata:
-  version: 1.0
+  version: 2.0
 
 sources:
   review_dataset:
@@ -7,5 +7,13 @@ sources:
     description: "Ambition box data for employee reviews"
     args:
       urlpath: '{{CATALOG_DIR}}/combinedReviews.csv'
+      csv_kwargs:
+        assume_missing: true
+  
+  location_mapping:
+    driver: csv
+    description: "Location mapping for pre-processing"
+    args:
+      urlpath: '{{CATALOG_DIR}}/Location Mapping.csv'
       csv_kwargs:
         assume_missing: true
