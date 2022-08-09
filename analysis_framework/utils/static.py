@@ -38,13 +38,13 @@ red = {"0-40": "Human brain can focus for around 90-120 minutes then it needs re
 
 # Location dropdown for dashboard
 # ---------------------------------
-locations_dropdown = ['Lucknow', 'Noida', 'Chennai', 'Pune',
+locations_dropdown = ['Lucknow', 'Noida', 'Chennai', 'Pune', 'Greater Noida',
                       'Bengaluru', 'Mumbai', 'Hyderabad', 'Madurai',
                       'Nagpur', 'New Delhi', 'Gurgaon', 'Coimbatore',
                       'Kolkata', 'Jaipur', 'Ahmedabad', 'Thane',
                       'Chandigarh', 'Kochi', 'Indore', 'Trivandrum',
                       'Mangalore',  'Mangalore', 'Gandhinagar', 'Mysore',
-                      'Bhubaneshwar', 'Others']
+                      'Bhubaneshwar', 'Navi Mumbai', 'Others']
 
 # Company dropdown for dashboard
 # ---------------------------------
