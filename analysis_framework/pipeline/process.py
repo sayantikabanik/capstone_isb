@@ -1,6 +1,6 @@
 import intake
 import pandas as pd
-
+import numpy as np
 from dagster import get_dagster_logger, job, op, Output, graph, Out
 from analysis_framework import DATA_CATALOG_PATH, PIPELINE_PATH
 from factor_analyzer import FactorAnalyzer
@@ -17,6 +17,11 @@ def read_raw_data():
     df_raw = catalog.review_dataset.read()
     return df_raw
 
+@op
+def read_loc_mapping():
+    catalog = intake.open_catalog(catalog_path)
+    df_loc = catalog.location_mapping.read()
+    return df_loc
 
 @op
 def subset_data(df_raw):
@@ -32,6 +37,56 @@ def subset_data_dim(df_raw):
                             'pros', 'jobFunction', 'company']]
     return df_subset_dim
 
+
+@op
+def maj_loc_list(df_loc):
+    major_locations=df_loc[df_loc['Type']=='Major']['Mapped Value'].to_list()
+    return major_locations
+
+@op
+def maj_loc_harmonize(df_loc):
+    # #Harmonizing Locations
+    location_mapping=df_loc.set_index('Original Value')['Mapped Value'].to_dict()
+    return location_mapping
+
+def map_maj_location(major_locations,location_name):
+    
+    for loc in major_locations:
+        ind=-1
+        if location_name.find(loc)!=-1:
+            ind=location_name.find(loc)
+            return loc
+    if ind==-1:
+        return location_name
+
+def extract_location(jobFunction):
+    try:
+        loc=jobFunction.split(' for ')[1].split(' in ')[1]
+        return loc
+    except:
+        return 'Not Specified'        
+
+@op
+def clean_location(df_subset_dim,major_locations,location_mapping,location_col='location',jobFunc_col='jobFunction'):
+    '''Takes a data-frame, location and Job Function column,
+	- extracts Location from Job Function,
+	- Renames ambiguous major cities
+	- Buckets 10% other cities to Others'''
+    #Extracting Expirience and Location from jobFunction column
+    df_subset_dim['extract_location']=df_subset_dim[jobFunc_col].apply(lambda x:extract_location(x))
+    #Imputing Blanks in Location column with data extracted from jobFunction, if available
+    df_subset_dim['cleaned_location']=np.where(df_subset_dim[location_col].isna(),df_subset_dim['extract_location'],df_subset_dim[location_col])
+    #Imputing unknown locations with Not Specified
+    df_subset_dim['cleaned_location']=df_subset_dim['cleaned_location'].fillna('Not Specified')
+    #Extracting location city from location columns
+    df_subset_dim['cleaned_location']=df_subset_dim['cleaned_location'].apply(lambda x:map_maj_location(major_locations,str(x)))
+    df_subset_dim['cleaned_location']=df_subset_dim['cleaned_location'].map(location_mapping)
+    #major_locations=df_loc[df_loc['Type']=='Major']['Mapped Value'].to_list()
+    major_locations.append('Not Specified')
+    df_subset_dim['cleaned_location']=np.where(df_subset_dim['cleaned_location'].isin(major_locations),df_subset_dim['cleaned_location'],'Others')
+    df_subset_dim=df_subset_dim.drop(columns=location_col)
+    df_subset_dim=df_subset_dim.rename(columns={'cleaned_location':'location'})
+    return df_subset_dim
 @op
 def index_reset(df):
     # important step: for factor analysis to have a similar sl no of the data
@@ -95,9 +150,13 @@ def combine_fact_dim(cluster_df,df_subset_dim):
 @job
 def compute():
     df_raw = read_raw_data()
+    df_loc = read_loc_mapping()
     df_subset = subset_data(df_raw)
     df_fa = index_reset(df_subset)
     df_subset_dim=subset_data_dim(df_raw)
+    major_locations=maj_loc_list(df_loc)
+    location_mapping=maj_loc_harmonize(df_loc)
+    df_subset_dim=clean_location(df_subset_dim,major_locations,location_mapping)
     df_subset_dim=index_reset(df_subset_dim)
     df_result = factor_analysis(df_fa)
     factor_df = intermediate_clustering_step(df_result)
