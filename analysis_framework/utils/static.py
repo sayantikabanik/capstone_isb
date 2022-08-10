@@ -53,8 +53,8 @@ company_dropdown = ['HCL Technologies', 'Infosys', 'TCS', 'Wipro']
 # Cluster options
 #----------------
 cluster_option = {'None': -1,
-                 'Not burned out': 1,
-                 'TOB': 2,
+                 'Not burned out': 2,
+                 'TOB': 1,
                  'Burned out': 3}
 
 # Text summarization
