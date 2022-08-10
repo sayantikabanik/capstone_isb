@@ -70,7 +70,7 @@ def suggestion_widget(location_widget_c, cluster_widget_c, comp_widget_c):
     filtered_output = obj.filtered_data()
     display_output = compile_text(filtered_output,'reviewText')
     suggestion = pn.Column(
-        '# Suggestion',
+        '# Feedback',
         pn.layout.Divider(),
         stext(display_output),
         background='#b8d1f5', height=400, width=500
