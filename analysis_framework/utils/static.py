@@ -43,7 +43,7 @@ locations_dropdown = ['Lucknow', 'Noida', 'Chennai', 'Pune',
                       'Nagpur', 'New Delhi', 'Gurgaon', 'Coimbatore',
                       'Kolkata', 'Jaipur', 'Ahmedabad', 'Thane',
                       'Chandigarh', 'Kochi', 'Indore', 'Trivandrum',
-                      'Mangalore',  'Mangalore', 'Gandhinagar', 'Mysore',
+                      'Mangalore', 'Gandhinagar', 'Mysore',
                       'Bhubaneshwar', 'Others']
 
 # Company dropdown for dashboard
