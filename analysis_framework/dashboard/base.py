@@ -3,6 +3,8 @@ import pandas as pd
 import holoviews as hv
 import hvplot.pandas
 from analysis_framework.utils.text_summarization import summarize_text as stext
+#from analysis_framework.utils.text_summarization import summarize_text_lexrank as stext_lexrank
+from analysis_framework.utils.text_summarization import summarize_text_lsa as stext_lsa
 from analysis_framework.utils import burnout_index_calculation
 from analysis_framework.utils import static as rs
 hv.extension('bokeh')
@@ -119,7 +121,7 @@ def pros_widget(location_widget_b, cluster_widget_b, comp_widget_b):
     pros = pn.Column(
         '# Pros',
         pn.layout.Divider(),
-        stext(display_output),
+        stext_lsa(display_output),
         background='#e4ede6', height=500, width=500
     )
     return pros
@@ -137,7 +139,7 @@ def cons_widget(location_widget_b, cluster_widget_b, comp_widget_b):
     cons = pn.Column(
         '# Cons',
         pn.layout.Divider(),
-        stext(display_output),
+        stext_lsa(display_output),
         background='#fac8d3', height=500, width=500
     )
     return cons

@@ -3,6 +3,8 @@ from sumy.nlp.tokenizers import Tokenizer
 from sumy.nlp.stemmers import Stemmer
 from sumy.utils import get_stop_words 
 from sumy.summarizers.edmundson import EdmundsonSummarizer
+from sumy.summarizers.lex_rank import LexRankSummarizer
+from sumy.summarizers.lsa import LsaSummarizer
 from analysis_framework.utils import static as rs
 
 # Uncomment below imports if not pre-installed
@@ -22,5 +24,16 @@ def summarize_text(text, language='english'):
     for sentence in summary:
         count += 1
         sentence_list.append(str(f'{count}. {sentence}'))
-    output = "\n".join(sentence_list)
+    output = "\n\n".join(sentence_list)
+    return output
+
+def summarize_text_lsa(text, language='english'):
+    summarizer = LsaSummarizer(Stemmer(language))
+    sentence_list=[]
+    count=0
+    summary = summarizer(PlaintextParser(text, Tokenizer(language)).document, rs.sentence_count)
+    for sentence in summary:
+        count += 1
+        sentence_list.append(str(f'{count}. {sentence}'))
+    output = "\n\n".join(sentence_list)
     return output
