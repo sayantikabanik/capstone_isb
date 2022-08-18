@@ -1,6 +1,6 @@
 # Capstone project : ISB <> Peakhealth
 
-### Demo link 
+### Demo link 📺
 [Click to view the demo ](https://www.canva.com/design/DAFJrdvMG4Y/lMlZ51AY9niIN_5QBLOBQQ/watch?utm_content=DAFJrdvMG4Y&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
 
 ### How to contribute to the repo 🤔
@@ -104,4 +104,5 @@ dagit -f analysis_framework/pipeline/process.py
 - Main files `app.py` (panel serve requirements and layout components) and `base.py` (contains all the logic)
 - Command to trigger the dashboard (subject to change) - `python analysis_framework/dashboard/app.py`
 
-![Dashboard](https://user-images.githubusercontent.com/17350312/183809714-e38adfa3-8ea8-4804-8623-57741c36157c.png)
+![Dashboard](https://user-images.githubusercontent.com/17350312/185426577-2786d20a-f50b-4a92-8f82-77385d748dd6.png)
+
