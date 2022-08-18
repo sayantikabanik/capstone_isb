@@ -1,4 +1,7 @@
-# Capstone project : Peakhealth
+# Capstone project : ISB <> Peakhealth
+
+### Demo link 
+[Click to view the demo ](https://www.canva.com/design/DAFJrdvMG4Y/lMlZ51AY9niIN_5QBLOBQQ/watch?utm_content=DAFJrdvMG4Y&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
 
 ### How to contribute to the repo 🤔
 - Create a separate branch for your usecase 
